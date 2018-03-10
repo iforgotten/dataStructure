@@ -11,6 +11,7 @@ private:
 	int* _elem;				// 数据区
 
 	void copyFrom(T const *A, Rank lo, Rank hi);
+	void expand();
 protected:
 
 public:
@@ -24,5 +25,6 @@ public:
 	// 向量整体复制
 	Vector(Vector<T> const &V);
 	~Vector();
+
 };
 

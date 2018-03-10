@@ -54,3 +54,15 @@ void Vector<T>::copyFrom(T const *A, Rank lo, Rank hi) {
 	}
 }
 
+template <typename T>
+void Vector<T>::expand() {
+	if(_size < _capacity) {
+		return;
+	}
+	T* oldElem = _elem;
+	_elem = new [_capacity <<= 1];
+	for(int i = 0; i <= _size; ++i) {
+		_elem[i] = oldElem[i];
+	}
+	delete[] oldElem;
+}
