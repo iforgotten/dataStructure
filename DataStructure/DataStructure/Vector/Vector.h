@@ -25,7 +25,10 @@ public:
 	// 向量整体复制
 	Vector(Vector<T> const &V);
 	~Vector();
+	// 寻秩访问
 	// 0 <= r <= _size
 	T &operator[](Rank r) const;
+	// 插入操作，返回插入的秩
+	Rank insert(Rank r, T const &e); 
 };
 

@@ -73,3 +73,16 @@ template <typename T>
 T Vector<T>::&operator[](Rank r) const {
 	return _elem[r];
 } // 0 <= r <= _size
+
+template <typename T>
+Rank Vector<T>::insert(Rank r, T const &e) {
+	expand(); // 如果有必要，则进行扩容
+
+	// locatino in [r,_size)
+	for(int i = _size; i > r; --i) {
+		_elem[_size] = _elem[_size-1]; 
+	}
+	_elem[r] = e;
+	_size++;
+	return r;
+} // 返回其秩
