@@ -37,5 +37,7 @@ public:
 	int remove(Rank r);
 	// 区间查找，如果找到，返回找到的元素的位置，如果没有找到，返回非法位置
 	int find(T const &e, Rank lo, Rank hi) const;
+	// 无序向量去重操作,返回删除元素总个数
+	int deduplicate();
 };
 

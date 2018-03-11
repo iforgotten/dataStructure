@@ -117,3 +117,18 @@ int Vector<T>::find(T const &e, Rank lo, Rank hi) const {
 	while((lo < hi--) && (_elem[hi] != e));
 	return hi;
 } // 返回最后一个查找位置
+template <typename T>
+int Vector<T>::deduplicate() {
+	// 备份原向量规模
+	int oldSize = _size;
+	// [0, loc)
+	int loc = 1;
+	while(loc < _size) {
+		// 三元表达式规范
+		(find(_elem[loc], 0, loc) < 0) ? 
+			loc++
+		: remove(loc);
+	}
+
+	return oldSize - _size;
+}
