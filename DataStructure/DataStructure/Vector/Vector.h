@@ -9,11 +9,11 @@ private:
 	Rank _size;				// 存储的有效数据的个数
 	int _capacity;			// 数据区的容量
 	int* _elem;				// 数据区
-
-	void copyFrom(T const *A, Rank lo, Rank hi);
-	void expand();
 protected:
+	void copyFrom(T const *A, Rank lo, Rank hi);
 
+	// 扩容函数，采用倍增函数
+	void expand();
 public:
 	// 默认构造
 	Vector(int capacity = DEFAULT_CAPACITY);
