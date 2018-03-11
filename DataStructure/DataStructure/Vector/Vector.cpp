@@ -110,3 +110,10 @@ int Vector<T>::remove(Rank r) {
 	remove(r, r+1);
 	return elem;
 } // 返回被删除元素
+
+template <typename T>
+int Vector<T>::find(T const &e, Rank lo, Rank hi) const {
+
+	while((lo < hi--) && (_elem[hi] != e));
+	return hi;
+} // 返回最后一个查找位置
