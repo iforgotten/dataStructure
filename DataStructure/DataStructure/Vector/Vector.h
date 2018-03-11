@@ -39,5 +39,7 @@ public:
 	int find(T const &e, Rank lo, Rank hi) const;
 	// 无序向量去重操作,返回删除元素总个数
 	int deduplicate();
+	// 函数指针形式；也可以用函数对象模式，函数对象正在学习中
+	void traverse(Vector<T> &visit);
 };
 
