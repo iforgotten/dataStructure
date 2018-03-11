@@ -32,6 +32,8 @@ public:
 	Rank insert(Rank r, T const &e); 
 	// 返回删除元素的个数
 	// [lo, hi)
-	int deleteBetween(Rank lo, Rank hi);
+	int remove(Rank lo, Rank hi);
+	// 单元素删除, 返回被删除元素
+	int remove(Rank r);
 };
 

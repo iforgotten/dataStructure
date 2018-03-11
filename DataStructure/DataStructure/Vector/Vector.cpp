@@ -88,7 +88,7 @@ Rank Vector<T>::insert(Rank r, T const &e) {
 } // 返回其秩
 
 template <typename T> 
-int Vector<T>::deleteBetween(Rank lo, Rank hi) {
+int Vector<T>::remove(Rank lo, Rank hi) {
 	// 区间删除 [lo, hi)
 	// 边界条件
 	if(lo == hi) 
@@ -102,3 +102,11 @@ int Vector<T>::deleteBetween(Rank lo, Rank hi) {
 	_size = lo;
 	return hi - lo;
 } // 区间删除，返回元素的个数
+
+template <typename T>
+int Vector<T>::remove(Rank r) {
+	// The range of the locations of the elments are in [lo, hi)
+	T elem = _elem[r];
+	remove(r, r+1);
+	return elem;
+} // 返回被删除元素
