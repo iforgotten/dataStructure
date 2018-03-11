@@ -86,3 +86,19 @@ Rank Vector<T>::insert(Rank r, T const &e) {
 	_size++;
 	return r;
 } // 返回其秩
+
+template <typename T> 
+int Vector<T>::deleteBetween(Rank lo, Rank hi) {
+	// 区间删除 [lo, hi)
+	// 边界条件
+	if(lo == hi) 
+		return 0;
+	// 左移元素，相当于删除元素
+	// 向量的个数 == _size; 与其位置的关系是相差一位。因为在C中，其内存偏移下标是从0开始的
+	while(hi < _size) {
+		_elem[lo++] = _elem[hi++];
+	}
+	// 影响_size
+	_size = lo;
+	return hi - lo;
+} // 区间删除，返回元素的个数

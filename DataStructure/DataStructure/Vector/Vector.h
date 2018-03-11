@@ -30,5 +30,8 @@ public:
 	T &operator[](Rank r) const;
 	// 插入操作，返回插入的秩
 	Rank insert(Rank r, T const &e); 
+	// 返回删除元素的个数
+	// [lo, hi)
+	int deleteBetween(Rank lo, Rank hi);
 };
 
