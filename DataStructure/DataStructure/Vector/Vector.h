@@ -25,6 +25,7 @@ public:
 	// 向量整体复制
 	Vector(Vector<T> const &V);
 	~Vector();
-
+	// 0 <= r <= _size
+	T &operator[](Rank r) const;
 };
 

@@ -59,10 +59,17 @@ void Vector<T>::expand() {
 	if(_size < _capacity) {
 		return;
 	}
+
 	T* oldElem = _elem;
 	_elem = new [_capacity <<= 1];
+	
 	for(int i = 0; i <= _size; ++i) {
 		_elem[i] = oldElem[i];
 	}
 	delete[] oldElem;
-}
+} // 扩容函数，采用倍增策略
+
+template <typename T>
+T Vector<T>::&operator[](Rank r) const {
+	return _elem[r];
+} // 0 <= r <= _size
