@@ -25,6 +25,11 @@ public:
 	// 向量整体复制
 	Vector(Vector<T> const &V);
 	~Vector();
+
+	// 0 <= r <= _size-1
+	int get(Rank r) const;
+		// 0 <= r <= _size
+	void put(Rank r, T const &e);
 	// 寻秩访问
 	// 0 <= r <= _size
 	T &operator[](Rank r) const;

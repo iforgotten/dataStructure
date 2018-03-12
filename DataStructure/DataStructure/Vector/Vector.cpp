@@ -35,6 +35,15 @@ Vector<T>::~Vector(void)
 }
 
 template <typename T>
+int Vector<T>::get(Rank r) const {
+	return _elem[r];
+}
+template <typename T>
+void Vector<T>::put(Rank r, T const &e) {
+	_elem[r] = e;
+}
+
+template <typename T>
 void Vector<T>::copyFrom(T const *A, Rank lo, Rank hi) {
 	// ∑÷≈‰»›¡ø
 	// [lo, hi);
