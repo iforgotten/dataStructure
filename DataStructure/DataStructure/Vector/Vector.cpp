@@ -222,8 +222,15 @@ static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 }
 */
 
-// 改进版
+// 改进版，版本B
 template <typename T>
 static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
-
+	Rank mid = -1;
+	// 有效长度缩减到1时，才会终止查找
+	while(1 < hi - lo) {
+		mid = (hi + lo) >> 1;
+		// [lo, mid)
+		(e < elem[mid]) ? (hi = mid) : (lo = mid);
+	}
+	return (elem[lo] == e) ? lo : -1;
 }
