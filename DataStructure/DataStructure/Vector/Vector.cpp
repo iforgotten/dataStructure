@@ -148,3 +148,18 @@ int Vector<T>::disordered() const {
  	}
 	return count;
 } // 返回逆序对个数
+
+// 去重操作低效版本
+/*
+template <typename T>
+int Vector<T>::uniquify() {
+	int oldSize = _size;
+
+	for(int i = 1; i < _size; ++i) {
+		if(_elem[i-1] == _elem[i]) {
+			remove(i);
+		}
+	}
+	return oldSize - _size;
+} // 低效版去重操作，返回删除的元素
+*/ 

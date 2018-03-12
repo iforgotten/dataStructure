@@ -43,5 +43,7 @@ public:
 	void traverse(void (*visit)(T&));
 	// 如果有序，返回0；无序返回逆序对的个数
 	int disordered() const;
+	// 有序向量的去重操作.返回删除的元素的个数
+	int uniquify();
 };
 
