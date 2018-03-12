@@ -223,6 +223,7 @@ static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 */
 
 // 改进版，版本B
+/*
 template <typename T>
 static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 	Rank mid = -1;
@@ -233,4 +234,17 @@ static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 		(e < elem[mid]) ? (hi = mid) : (lo = mid);
 	}
 	return (elem[lo] == e) ? lo : -1;
+}
+*/
+
+// 改进版，版本C，严格遵循语义约定
+template <typename T>
+static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
+	Rank mid = -1;
+	// 长度缩减到0，即[0,1)
+	while(lo < hi) {
+		mid = (lo + hi) >> 1;
+		(e < elem[mid]) ? (hi = mid) : (lo = mid+1);
+	} // 查找出口是不大于e的最小整数
+	return --lo;
 }
