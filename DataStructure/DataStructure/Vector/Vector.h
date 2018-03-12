@@ -8,12 +8,16 @@ class Vector
 private:
 	Rank _size;				// 存储的有效数据的个数
 	int _capacity;			// 数据区的容量
-	int* _elem;				// 数据区
-protected:
-	void copyFrom(T const *A, Rank lo, Rank hi);
+	T* _elem;				// 数据区
 
+	void copyFrom(T const *A, Rank lo, Rank hi);
 	// 扩容函数，采用倍增函数
 	void expand();
+protected:
+	// 二分查找
+	static Rank binSearch(T *elem, T const &e, Rank lo, Rank hi);
+	// Fibonacci 查找
+	static Rank fibSearch(T *elem, T const &e, Rank lo, Rank hi);
 public:
 	// 默认构造
 	Vector(int capacity = DEFAULT_CAPACITY);
@@ -50,5 +54,7 @@ public:
 	int disordered() const;
 	// 有序向量的去重操作.返回删除的元素的个数
 	int uniquify();
+	// 有序向量查找算法
+	Rank search(T const &e, Rank lo, Rank hi) const;
 };
 

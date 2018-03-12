@@ -187,3 +187,31 @@ int Vector<T>::uniquify() {
 	_size = ++i;
 	return oldSize - _size;
 } // 返回删除元素个数
+
+template <typename T>
+int Vector<T>::search(T const &e, Rank lo, Rank hi) const {
+	return (rand() % 2) ? 
+		binSearch(_elem, e, lo, hi) 
+		: fibSearch(_elem, e, lo, hi);
+} // 随机选择搜素算法
+
+template <typename T>
+static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
+	Rank mid = (lo + hi) >> 1;
+	// 采用迭代代替递归，因为递归的一些不必要操作浪费时间
+	while(lo < hi) {
+		if(elem[mid] < e) {
+			// (mid,hi)
+			lo = mid + 1;	// 深入后半段，继续查找
+		} else if (e < elem[mid]) {
+			// [lo, mid)
+			hi = mid;		// 深入前半段，继续查找
+		} else {
+			// 命中
+			return mid;
+		}
+	}
+
+	// 查找失败
+	return -1;	
+}
