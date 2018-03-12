@@ -163,3 +163,18 @@ int Vector<T>::uniquify() {
 	return oldSize - _size;
 } // 低效版去重操作，返回删除的元素
 */ 
+
+// 高校版本
+template <typename T>
+int Vector<T>::uniquify() {
+	int oldSize = _size;
+	// 位置指针；size 与loc相差1
+	int i = j = 0;
+	while(++j < _size-1) {
+		// 不相等，则前移
+		if(_elem[i] != _elem[j]) 
+			_elem[++i] = _elem[j];
+	}
+	_size = ++i;
+	return oldSize - _size;
+} // 返回删除元素个数
