@@ -138,3 +138,13 @@ void Vector<T>::traverse(void (*visit)(T&)) {
 	for(int i = 0; i < _size; ++i)
 		visit(_elem[i]);
 }
+
+template <typename T>
+int Vector<T>::disordered() const {
+	// 逆序对个数
+	int count = 0;
+	for(int i = 1; i < _size; ++i) {
+		count += (_elem[i-1] > _elem[i]);
+ 	}
+	return count;
+} // 返回逆序对个数

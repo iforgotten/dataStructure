@@ -40,6 +40,8 @@ public:
 	// 无序向量去重操作,返回删除元素总个数
 	int deduplicate();
 	// 函数指针形式；也可以用函数对象模式，函数对象正在学习中
-	void traverse(Vector<T> &visit);
+	void traverse(void (*visit)(T&));
+	// 如果有序，返回0；无序返回逆序对的个数
+	int disordered() const;
 };
 
