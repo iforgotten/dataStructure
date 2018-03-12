@@ -190,11 +190,16 @@ int Vector<T>::uniquify() {
 
 template <typename T>
 int Vector<T>::search(T const &e, Rank lo, Rank hi) const {
+	/*
 	return (rand() % 2) ? 
 		binSearch(_elem, e, lo, hi) 
 		: fibSearch(_elem, e, lo, hi);
+		*/ 
+	return binSearch(_elem, e, lo, hi);
 } // 随机选择搜素算法
 
+// 版本A，查找树不平衡的二分查找
+/*
 template <typename T>
 static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 	Rank mid = (lo + hi) >> 1;
@@ -214,4 +219,11 @@ static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 
 	// 查找失败
 	return -1;	
+}
+*/
+
+// 改进版
+template <typename T>
+static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
+
 }

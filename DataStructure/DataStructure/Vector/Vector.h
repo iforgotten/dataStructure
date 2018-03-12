@@ -17,7 +17,7 @@ protected:
 	// 二分查找
 	static Rank binSearch(T *elem, T const &e, Rank lo, Rank hi);
 	// Fibonacci 查找
-	static Rank fibSearch(T *elem, T const &e, Rank lo, Rank hi);
+	// static Rank fibSearch(T *elem, T const &e, Rank lo, Rank hi);
 public:
 	// 默认构造
 	Vector(int capacity = DEFAULT_CAPACITY);
