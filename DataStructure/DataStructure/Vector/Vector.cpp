@@ -273,11 +273,11 @@ bool Vector<T>::bubble(Rank lo, Rank hi) {
 	// 无罪推断
 	// 在没有证据表明其无序的情况下，认为其有序
 	bool sorted = true;
-	for(int i = lo + 1; i < hi; ++i) {
+	while(++lo < hi) {
 		// 若存在逆序对
-		if(_elem[i-1] > _elem[i]) {
+		if(_elem[lo-1] > _elem[lo]) {
 			sorted = false;
-			swap(&_elem[i-1], &_elem[i]);
+			swap(&_elem[lo-1], &_elem[lo]);
 		}
 	}
 	return sorted;
