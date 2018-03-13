@@ -262,6 +262,8 @@ void Vector<T>::sort(Rank lo, Rank hi) {
 	}
 }
 
+// 冒泡排序，版本1改进版
+/*
 template <typename T>
 void Vector<T>::bubbleSort(Rank lo, Rank hi) {
 	// 逐趟扫描，直到全序
@@ -281,7 +283,26 @@ bool Vector<T>::bubble(Rank lo, Rank hi) {
 		}
 	}
 	return sorted;
-} // 返回是否有序
+} // 返回是否有序; 版本1
+*/
+
+template <typename T>
+void Vector<T>::bubbleSort(Rank lo, Rank hi) {
+	while(lo < (hi = bubble(lo, hi)));
+} // 版本2，改进版
+
+template <typename T>
+Rank Vector<T>::bubble(Rank lo, Rank hi) {
+	// [lo-1, lo]
+	Rank last = lo;
+	while(++lo < hi) {
+		if(_elem[lo-1] > _elem[lo]) {
+			last = lo;
+			swap(&_elem[lo-1], &_elem[lo]);
+		}
+	}
+	return last;
+} // 明确哪个区间有序，哪个区间无序，在无序区间上做冒泡排序
 
 template <typename T>
 void Vector<T>::swap(T *e1, T *e2) {

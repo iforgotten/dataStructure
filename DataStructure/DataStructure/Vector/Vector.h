@@ -13,7 +13,9 @@ private:
 	void copyFrom(T const *A, Rank lo, Rank hi);
 	// 扩容函数，采用倍增函数
 	void expand();
-	bool bubble(Rank lo, Rank hi);
+	// 冒泡排序版本1，改进版
+	// bool bubble(Rank lo, Rank hi);
+	Rank bubble(Rank lo, Rank hi);
 	void swap(T *e1, T *e2);
 protected:
 	// 二分查找
