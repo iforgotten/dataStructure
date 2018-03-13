@@ -241,10 +241,51 @@ static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 template <typename T>
 static Rank Vector<T>::binSearch(T *elem, T const &e, Rank lo, Rank hi) {
 	Rank mid = -1;
-	// 长度缩减到0，即[0,1)
+	// 长度缩减到0，
 	while(lo < hi) {
 		mid = (lo + hi) >> 1;
 		(e < elem[mid]) ? (hi = mid) : (lo = mid+1);
 	} // 查找出口是不大于e的最小整数
 	return --lo;
 }
+
+template <typename T>
+void Vector<T>::sort(Rank lo, Rank hi) {
+	switch(rand() % 2) {
+		case 1:
+			bubbleSort(lo, hi);
+			break;
+		case 2:
+			break;
+		default:
+			break;
+	}
+}
+
+template <typename T>
+void Vector<T>::bubbleSort(Rank lo, Rank hi) {
+	// 逐趟扫描，直到全序
+	while(!bubble(lo, hi--));
+}
+
+template <typename T>
+bool Vector<T>::bubble(Rank lo, Rank hi) {
+	// 无罪推断
+	// 在没有证据表明其无序的情况下，认为其有序
+	bool sorted = true;
+	for(int i = lo + 1; i < hi; ++i) {
+		// 若存在逆序对
+		if(_elem[i-1] > _elem[i]) {
+			sorted = false;
+			swap(&_elem[i-1], &_elem[i]);
+		}
+	}
+	return sorted;
+} // 返回是否有序
+
+template <typename T>
+void Vector<T>::swap(T *e1, T *e2) {
+	T tmp = *e1;
+	*e1 = *e2;
+	*e2 = tmp;
+} // 交换两个变量

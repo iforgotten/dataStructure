@@ -13,11 +13,15 @@ private:
 	void copyFrom(T const *A, Rank lo, Rank hi);
 	// 扩容函数，采用倍增函数
 	void expand();
+	bool bubble(Rank lo, Rank hi);
+	void swap(T *e1, T *e2);
 protected:
 	// 二分查找
 	static Rank binSearch(T *elem, T const &e, Rank lo, Rank hi);
 	// Fibonacci 查找
 	// static Rank fibSearch(T *elem, T const &e, Rank lo, Rank hi);
+	// 冒泡排序
+	void bubbleSort(Rank lo, Rank hi);
 public:
 	// 默认构造
 	Vector(int capacity = DEFAULT_CAPACITY);
@@ -56,5 +60,7 @@ public:
 	int uniquify();
 	// 有序向量查找算法
 	Rank search(T const &e, Rank lo, Rank hi) const;
+	// 排序的统一接口
+	void sort(Rank lo, Rank hi);
 };
 
